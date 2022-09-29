@@ -37,17 +37,7 @@ An external controller (such as the Arduino) tells the servo where to go with a 
 
 
 ### Figure-03 SERVO MOTOR OVERVIEW 
-
- 
-
-
- 
-
-
-
-
-
-CIRCUIT DIAGRAM
+## CIRCUIT DIAGRAM
  
  
  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
@@ -67,6 +57,81 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+### serial Monitor:
+```
+// C++ code
+
+#include <Servo.h>
+int pos = 0;
+Servo servo_9;
+
+void setup()
+{
+ Serial.begin(9600);
+ servo_9.attach(9, 500, 2500);//
+ 
+}
+
+void loop()
+{
+ for (pos = 0; pos <= 180; pos += 1) 
+ {
+   servo_9.write(pos);
+   delay(15);
+ 	Serial.print("Angle of Server: ");
+ 	Serial.println(pos);
+ }
+ for (pos = 180; pos >= 0; pos -= 1) 
+ {
+   servo_9.write(pos);
+   delay(15);
+ 	Serial.print("Angle of Server: ");
+ 	Serial.println(pos);
+ }
+}
+```
+
+## output:
+![output](o2.png)
+
+
+## Toggle graph:
+```
+// C++ code
+
+// C++ code
+
+#include <Servo.h>
+int pos = 0;
+Servo servo_9;
+
+void setup()
+{
+  Serial.begin(9600);
+  servo_9.attach(9, 500, 2500);//
+  
+}
+
+void loop()
+{
+  for (pos = 0; pos <= 180; pos += 1) 
+  {
+    servo_9.write(pos);
+    delay(15);
+  	Serial.println(pos);
+  }
+  for (pos = 180; pos >= 0; pos -= 1) 
+  {
+    servo_9.write(pos);
+    delay(15);
+  	Serial.println(pos);
+  }
+}
+
+```
+## output:
+![output](o3.png)
+
  
 
 
